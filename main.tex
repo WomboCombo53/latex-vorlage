@@ -1,0 +1,76 @@
+\documentclass[ngerman, a4paper, 12pt]{article} % Dokumentklasse, Einstellung auf A4 und Schriftgröße 12
+\usepackage{graphicx}   % Package für Bilder
+\usepackage{setspace}   % Space-Attribute
+\usepackage{helvet}     % Helvet Schrift
+\renewcommand{\familydefault}{\sfdefault}   % Einstellen der Schrift
+\usepackage[margin=2.5cm]{geometry}     % Einstellen der Seitenabstände
+\usepackage{xcolor}     % Package für Schriftfarbe
+\usepackage{fancyhdr}   % Package für Kopf- und Fußzeile
+\usepackage{tocloft}    % Package für Inhaltsverzeichnis
+\usepackage[T1]{fontenc} % Package, um Umlaute für Silbentrennung zu erkennen
+\usepackage{babel} % Deutsche Textkonventionen verwenden (gemeinsam mit ngerman documentclass oben)
+%\usepackage{url} % für richtige URL Anzeige im Lit.verzeichnis
+\usepackage[hidelinks]{hyperref} % für Links auf die einzelnen Kapitel innerhalb des Inhaltsverzeichnisses
+\usepackage[all]{hypcap} % Korrektes Springen zu Abbildungen und Tabellen
+\usepackage{listings} % Codeschnipselformatierung
+\usepackage[skip=10pt plus1pt, indent=0pt]{parskip} % Kein Einzug bei neuen Absätzen, stattdessen Zeilenabstand
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}   % Platzieren von Leaderdots im Inhaltsverzeichnis
+
+\setlength{\headheight}{14.5pt}     % Höhe des Kopfes einstellen
+
+\definecolor{myred}{RGB}{178,34,34}     % Definieren der Farbe "myred"
+
+\lstset{basicstyle=\ttfamily, % Codestyle für Listings (Programmcode)
+  showstringspaces=false,
+  breaklines=true,
+  commentstyle=\color{red},
+  keywordstyle=\color{blue}
+}
+
+% Benutzerdefinierte Befehle
+\newcommand{\creator}{Max Mustermann}
+\newcommand{\company}{Muster KG}
+\newcommand{\sectionname}{}
+
+\begin{document}    % Start Dokument
+
+\onehalfspacing % 1,5 Zeilenabstand
+\input{Kapitel/titelblatt.tex}  % Import Titelblatt
+\clearpage
+\pagenumbering{Roman}           % Umstellen der Seitenzahlen auf Römisch, damit auch im Inhaltsverzeichnis römisch
+\input{Kapitel/ehrenwoertliche_erklaerung.tex}  % Import Ehrenwörtliche Erklärung
+\clearpage      % Seitenumbruch
+\input{Kapitel/abstract_englisch.tex}  % Import Abstract Englisch
+\clearpage
+\input{Kapitel/abstract_deutsch.tex}  % Import Abstract Deutsch
+\clearpage
+\input{Kapitel/inhaltsverzeichnis.tex}
+\clearpage
+\input{Kapitel/abkuerzungsverzeichnis.tex}
+\clearpage
+\input{Kapitel/abbildungsverzeichnis.tex}
+\clearpage
+\input{Kapitel/tabellenverzeichnis.tex}
+\clearpage
+\pagenumbering{arabic}              % Umstellen der Seitenzahlen auf Arabisch, damit im Inhaltsverzeichnis arabisch
+\input{Kapitel/1_einleitung.tex}
+\clearpage
+\input{Kapitel/2_grundlagen.tex}
+\clearpage
+\input{Kapitel/3_stand_der_technik.tex}
+\clearpage
+\input{Kapitel/5_planung.tex}
+\clearpage
+\input{Kapitel/6_architektur.tex}
+\clearpage
+\input{Kapitel/7_umsetzung.tex}
+\clearpage
+\input{Kapitel/8_fazit.tex}
+\clearpage
+\input{Kapitel/literaturverzeichnis.tex}
+\clearpage
+\input{Kapitel/anhang.tex}
+
+
+\end{document}  % Ende Dokument

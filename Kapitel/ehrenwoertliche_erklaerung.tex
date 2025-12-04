@@ -1,0 +1,30 @@
+\renewcommand{\sectionname}{Ehrenwörtliche Erklärung}
+
+\pagestyle{fancy}   % Vordefinierten Pagestyle auswählen
+\fancyhf{}  % Clearen der vorherigen Einstellungen für Kopf- und Fußzeilen
+
+\fancyhead[L]{\sectionname}     % Kopfzeile oben links "Ehrenwörtliche Erklärung"
+\fancyhead[R]{\Roman{page}}                 % Kopfzeile oben rechts römische Seitenzahlen
+\fancyfoot[L]{\creator}            % Fußzeile unten links Name
+\fancyfoot[R]{\company}             % Fußzeile unten rechts Firma
+
+\renewcommand{\headrulewidth}{0.4pt}        % Dicke der Kopfzeile
+\renewcommand{\footrulewidth}{0.4pt}        % Dicke der Fußzeile
+
+\setcounter{page}{2}                        % Seitenzahlen Start bei 2
+
+\section*{\sectionname}                                             % Überschrift/Section: mit \section* wird eine Überschrift gestartet ohne Nummerierung
+\addcontentsline{toc}{section}{\sectionname}                        % Hinzufügen der Ehrenwörtlichen Erklärung ins Inhaltsverzeichnis, da \section mit * nicht automatisch hinzugefügt. \section ohne * schon.
+Erklärung\\[1cm]                                                                % \\ -> Zeilenumbruch mit 1 cm Platz zur nächsten Zeile
+Ich versichere hiermit, dass ich meine Praxisarbeit mit dem Thema
+``THEMA'' selbstständig verfasst und keine anderen als die
+angebenen Quellen und Hilfsmittel benutzt habe. Ich versichere zudem,
+dass die eingereichte elektronische Verfassung mit der gedruckten Fassung
+übereinstimmt.\\[3cm]
+
+\begin{center}                                                                  % Alles Zentrieren, was folgt   
+    \begin{tabular}{p{7cm}p{1cm}p{7cm}}                                         % Tab-Paragraph -> {p{7cm}p{1cm}p{7cm}} initialisiert eine "Tabelle" mit drei Spalten. Spalte 1 und 3 7cm, Spalte 2 1cm
+        \rule{7cm}{0.4pt} & & \rule{7cm}{0.4pt}\\                               % Linien zum Unterschreiben
+        Ort, Datum & & Unterschrift\\                                           % Titel der Linie
+    \end{tabular}
+\end{center}

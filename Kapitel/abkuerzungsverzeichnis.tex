@@ -1,0 +1,23 @@
+\renewcommand{\sectionname}{Abkürzungsverzeichnis}
+
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\sectionname}
+\fancyhead[R]{\Roman{page}}
+\fancyfoot[L]{\creator}
+\fancyfoot[R]{\company}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\section*{\sectionname}
+\begin{flushleft}
+    \begin{tabular}{p{3cm}p{1cm}p{10cm}}
+        \bfseries Abkürzung & & \bfseries Beschreibung\\[0.5cm]
+        IOC && Indicator of Compromise\\
+
+    \end{tabular}
+\end{flushleft}
+
+\addcontentsline{toc}{section}{\sectionname}

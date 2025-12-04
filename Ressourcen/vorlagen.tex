@@ -1,0 +1,30 @@
+% Codevorlagen
+Silbentrennung auch bei Wörtern mit Bindestrich aktivieren:
+SQL"=Funktionalitäten ("= wird zum Bindestrich)
+
+Bilder einfügen:
+% mögliche Positionen: h = here, p = extra page gemeinsam mit anderen Bildern, t = top, b = bottom, ! = zwingend
+\begin{figure}[hp]                         
+    \centering                             
+    \includegraphics[width=0.6\textwidth]{Ressourcen/Bilder/SolutionStructure.png}
+    \caption{Struktur der Visual Studio Solution}\label{fig:VSSolution}    
+\end{figure}
+
+
+Code einfügen:
+\begin{figure}[hp]
+    \begin{lstlisting}
+public abstract class SQLQueryable
+{
+		public abstract string TableName { get; }
+		/// <summary>
+		/// The column names of this table WITHOUT id
+		/// </summary>
+		protected abstract string[] ColumnNames { get; }
+}
+    \end{lstlisting}
+    \caption{Ausschnitt der abstrakten Klasse SQLQueryable}\label{fig:SQLQueryableAusschnitt}
+\end{figure}
+
+Caption ohne Zitat im Abbildungsverzeichnis:
+\caption[Konfiguration des Ubuntu-Systems]{Konfiguration des Ubuntu-Systems, teilweise aus \cite{dockerUbuntuDockerDocs0200}}\label{fig:createMispUser}
