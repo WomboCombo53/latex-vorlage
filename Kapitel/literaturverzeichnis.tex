@@ -1,20 +1,7 @@
-\renewcommand{\sectionname}{Literaturverzeichnis}
-
-\pagestyle{fancy}
-\fancyhf{}
-
-\fancyhead[L]{\sectionname}
-\fancyhead[R]{\arabic{page}}
-\fancyfoot[L]{\creator}
-\fancyfoot[R]{\company}
-
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0.4pt} 
-
-\renewcommand\refname{\sectionname}
+\setupchapter{Literaturverzeichnis}
 
 \phantomsection % Helper, damit die Verlinkung im Inhaltsverzeichnis stimmt
+\addcontentsline{toc}{section}{\sectionname}
 
-\addcontentsline{toc}{section}{\sectionname}  % References zum Inhaltsverzeichnis hinzufügen
-\bibliographystyle{ieeeMitURLDate}   
-\bibliography{Ressourcen/Literatur/literatur}  % Quelle der Quellen
+\section*{\sectionname}
+\printbibliography[heading=none] % heading=none, da Überschrift bereits durch \section* gesetzt

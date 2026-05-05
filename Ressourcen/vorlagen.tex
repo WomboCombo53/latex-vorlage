@@ -28,3 +28,26 @@ public abstract class SQLQueryable
 
 Caption ohne Zitat im Abbildungsverzeichnis:
 \caption[Konfiguration des Ubuntu-Systems]{Konfiguration des Ubuntu-Systems, teilweise aus \cite{dockerUbuntuDockerDocs0200}}\label{fig:createMispUser}
+
+
+tabularx-Tabelle (Spalte X füllt die Textbreite aus):
+\begin{table}[hp]
+    \centering
+    \caption{Vergleich der Systemkomponenten}\label{tab:systemkomponenten}
+    \begin{tabularx}{\textwidth}{l l X}
+        \toprule
+        Komponente & Version & Beschreibung \\
+        \midrule
+        Frontend   & 3.2.1   & Weboberfläche zur Visualisierung und Steuerung der Anwendung durch den Benutzer \\
+        Backend    & 2.0.0   & REST-API-Server mit Geschäftslogik und Datenbankanbindung \\
+        Datenbank  & 14.5    & Relationales Datenbankmanagementsystem zur persistenten Datenspeicherung \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+
+cleveref-Verweise (\cref{} für Kleinschreibung, \Cref{} für Großschreibung am Satzanfang):
+Wie in \cref{fig:VSSolution} dargestellt, zeigt \cref{tab:systemkomponenten} die Übersicht.
+\Cref{fig:VSSolution} zeigt die Struktur der Solution.
+% Mehrere Referenzen auf einmal:
+wie in \cref{fig:VSSolution,tab:systemkomponenten} zu sehen
