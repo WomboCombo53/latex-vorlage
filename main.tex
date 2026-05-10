@@ -1,4 +1,6 @@
-\documentclass[ngerman, a4paper, 12pt]{article} % Dokumentklasse, Einstellung auf A4 und Schriftgröße 12
+\documentclass[a4paper, 12pt]{article} % Dokumentklasse, Einstellung auf A4 und Schriftgröße 12
+\usepackage[utf8]{inputenc} % UTF-8 Zeichenkodierung für pdfLaTeX
+\usepackage[T1]{fontenc}    % Umlaute für Silbentrennung
 \usepackage{graphicx}   % Package für Bilder
 \usepackage{setspace}   % Space-Attribute
 \usepackage{helvet}     % Helvet Schrift
@@ -7,13 +9,28 @@
 \usepackage{xcolor}     % Package für Schriftfarbe
 \usepackage{fancyhdr}   % Package für Kopf- und Fußzeile
 \usepackage{tocloft}    % Package für Inhaltsverzeichnis
-\usepackage[T1]{fontenc} % Package, um Umlaute für Silbentrennung zu erkennen
-\usepackage{babel} % Deutsche Textkonventionen verwenden (gemeinsam mit ngerman documentclass oben)
-%\usepackage{url} % für richtige URL Anzeige im Lit.verzeichnis
-\usepackage[hidelinks]{hyperref} % für Links auf die einzelnen Kapitel innerhalb des Inhaltsverzeichnisses
+\usepackage[ngerman]{babel} % Deutsche Textkonventionen
+\usepackage{csquotes}   % Korrekte deutsche Anführungszeichen mit \enquote{}
+\usepackage{microtype}  % Bessere Typografie (Randausgleich, Trennungsoptimierung)
+\usepackage{booktabs}   % Professionelle Tabellen (\toprule, \midrule, \bottomrule)
+\usepackage{tabularx}   % Tabellen mit flexibler Spaltenbreite (X-Spaltentyp)
+\usepackage[hidelinks]{hyperref} % Links im Inhaltsverzeichnis
+\usepackage{xurl}        % URL-Umbrüche an beliebigen Zeichen (nicht nur /) — muss nach hyperref stehen
 \usepackage[all]{hypcap} % Korrektes Springen zu Abbildungen und Tabellen
-\usepackage{listings} % Codeschnipselformatierung
-\usepackage[skip=10pt plus1pt, indent=0pt]{parskip} % Kein Einzug bei neuen Absätzen, stattdessen Zeilenabstand
+\usepackage[
+  backend=biber,
+  style=ieee,
+  urldate=iso,
+  seconds=true
+]{biblatex} % Modernes Literaturverwaltungspaket mit biber-Backend
+\addbibresource{Ressourcen/Literatur/literatur.bib}
+% Erlaubt URL-Zeilenumbrüche in Bibliographieeinträgen an Buchstaben und Ziffern
+\setcounter{biburlnumpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+\setcounter{biburllcpenalty}{9000}
+\usepackage{listings}   % Codeschnipselformatierung
+\usepackage[skip=10pt plus1pt, indent=0pt]{parskip} % Kein Einzug, stattdessen Zeilenabstand
+\usepackage[ngerman]{cleveref}  % Intelligente Querverweise mit \cref{} und \Cref{}
 
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}   % Platzieren von Leaderdots im Inhaltsverzeichnis
 
@@ -32,6 +49,20 @@
 \newcommand{\creator}{Max Mustermann}
 \newcommand{\company}{Muster KG}
 \newcommand{\sectionname}{}
+
+% Hilfsmakro: setzt sectionname und richtet Kopf-/Fußzeile einheitlich ein.
+% Verwendet \thepage, das automatisch die aktive Nummerierung (römisch/arabisch) nutzt.
+\newcommand{\setupchapter}[1]{%
+  \renewcommand{\sectionname}{#1}%
+  \pagestyle{fancy}%
+  \fancyhf{}%
+  \fancyhead[L]{\sectionname}%
+  \fancyhead[R]{\thepage}%
+  \fancyfoot[L]{\creator}%
+  \fancyfoot[R]{\company}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0.4pt}%
+}
 
 \begin{document}    % Start Dokument
 
