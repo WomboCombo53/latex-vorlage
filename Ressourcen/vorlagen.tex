@@ -1,8 +1,8 @@
 % Codevorlagen
-Silbentrennung auch bei Wörtern mit Bindestrich aktivieren:
+% Silbentrennung auch bei Wörtern mit Bindestrich aktivieren:
 SQL"=Funktionalitäten ("= wird zum Bindestrich)
 
-Bilder einfügen:
+% Bilder einfügen:
 % mögliche Positionen: h = here, p = extra page gemeinsam mit anderen Bildern, t = top, b = bottom, ! = zwingend
 % Pfad relativ zu \graphicspath (main.tex), daher hier ohne "Ressourcen/Bilder/"-Präfix
 \begin{figure}[hp]
@@ -12,8 +12,8 @@ Bilder einfügen:
 \end{figure}
 
 
-Code einfügen (Caption/Label direkt am lstlisting, damit der Codeschnipsel im
-Listingverzeichnis statt im Abbildungsverzeichnis erscheint):
+% Code einfügen (Caption/Label direkt am lstlisting, damit der Codeschnipsel im
+% Listingverzeichnis statt im Abbildungsverzeichnis erscheint):
 \begin{lstlisting}[caption={Ausschnitt der abstrakten Klasse SQLQueryable}, label={lst:SQLQueryableAusschnitt}]
 public abstract class SQLQueryable
 {
@@ -25,11 +25,11 @@ public abstract class SQLQueryable
 }
 \end{lstlisting}
 
-Caption ohne Zitat im Abbildungsverzeichnis:
+% Caption ohne Zitat im Abbildungsverzeichnis:
 \caption[Konfiguration des Ubuntu-Systems]{Konfiguration des Ubuntu-Systems, teilweise aus \cite{dockerUbuntuDockerDocs0200}}\label{fig:createMispUser}
 
 
-tabularx-Tabelle (Spalte X füllt die Textbreite aus):
+% tabularx-Tabelle (Spalte X füllt die Textbreite aus):
 \begin{table}[hp]
     \centering
     \caption{Vergleich der Systemkomponenten}\label{tab:systemkomponenten}
@@ -45,14 +45,14 @@ tabularx-Tabelle (Spalte X füllt die Textbreite aus):
 \end{table}
 
 
-cleveref-Verweise (\cref{} für Kleinschreibung, \Cref{} für Großschreibung am Satzanfang):
+% cleveref-Verweise (\cref{} für Kleinschreibung, \Cref{} für Großschreibung am Satzanfang):
 Wie in \cref{fig:VSSolution} dargestellt, zeigt \cref{tab:systemkomponenten} die Übersicht.
 \Cref{fig:VSSolution} zeigt die Struktur der Solution.
 % Mehrere Referenzen auf einmal:
 wie in \cref{fig:VSSolution,tab:systemkomponenten} zu sehen
 
 
-Abkürzungen (glossaries-Package):
+% Abkürzungen (glossaries-Package):
 % Neue Abkürzung in Ressourcen/abkuerzungen.tex definieren:
 % \newacronym{label}{Abkürzung}{Ausgeschriebene Bedeutung}
 % Im Fließtext referenzieren, z. B.:
@@ -64,26 +64,26 @@ Ein \gls{ioc} zeigt eine mögliche Kompromittierung an.
 Man spricht hier allgemein von \GLS{ioc}s.   % komplett in Großbuchstaben, z. B. für Überschriften
 
 
-Zitieren (biblatex, style=ieee):
+% Zitieren (biblatex, style=ieee):
 % \parencite für eine abschließende/parenthetische Quellenangabe:
 Dies wird bereits so beschrieben \parencite{amazonAmazonComputeSLA2022}.
 % \textcite, wenn die Quelle das grammatikalische Subjekt des Satzes ist:
 \textcite{amazonAmazonComputeSLA2022} beschreibt dieses Verhalten im Detail.
 % \parencite rendert unter style=ieee als reines "[1]", \textcite dagegen als "Autor [1]"
 % (schreibt den Autorennamen automatisch aus) — daher \textcite verwenden, wenn die Quelle als
-% Satzsubjekt auftritt, \parencite für die abschließende/parenthetische Angabe. \footcite passt
-% nicht zum nummerischen Klammerstil (Fußnote mit nur "[1]" wäre redundant) und wird deshalb hier
+% Satzsubjekt auftritt, \parencite für die abschließende/parenthetische Angabe. 
+% \footcite passt nicht zum nummerischen Klammerstil (Fußnote mit nur "[1]" wäre redundant) und wird deshalb hier
 % nicht verwendet.
 
 
-Deutsche Anführungszeichen (csquotes):
+% Deutsche Anführungszeichen (csquotes):
 \enquote{Ein Beispieltext}
 % \enquote{} setzt automatisch die korrekten Anführungszeichen für die aktive babel-Sprache
 % (hier: ngerman, also „Ein Beispieltext"). Die manuelle Variante ``Ein Beispieltext'' erzeugt
 % dagegen die falschen (englischen) Anführungszeichen und sollte nicht verwendet werden.
 
 
-Links im Fließtext (hyperref/xurl):
+% Links im Fließtext (hyperref/xurl):
 \href{https://www.example.com}{Linktext}   % Link mit eigenem, lesbarem Anzeigetext
 \url{https://www.example.com/ein/sehr/langer/pfad-der-sonst-nicht-umbrechen-wuerde}
 % xurl (main.tex) erlaubt \url{}, an beliebigen Zeichen umzubrechen statt nur an "/" —
