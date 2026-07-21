@@ -5,3 +5,27 @@
 
 \section*{\sectionname}
 \printbibliography[heading=none] % heading=none, da Überschrift bereits durch \section* gesetzt
+
+\begin{table}[hp]
+    \centering
+    \let\oldaddcontentsline\addcontentsline % Caption soll nicht im Tabellenverzeichnis erscheinen
+    \renewcommand{\addcontentsline}[3]{}
+    \caption{Übersicht über die verwendeten KI-basierten Werkzeuge}\label{tab:ki-werkzeuge}
+    \let\addcontentsline\oldaddcontentsline
+    \begin{tabularx}{\textwidth}{|l|X|}
+        \hline
+        Werkzeug & Beschreibung der Nutzung \\
+        \hline
+        ChatGPT &
+        – Verständnis von Grundbegriffen im Themenfeld energiereicher Strahlungsarten (Kapitel 3.4)\newline
+        – Recherche und Identifikation von Literaturstellen zu „Auswirkungen energiereicher Strahlen auf das Wachstum von Gänseblümchen“ (Kapitel 4) \\
+        \hline
+        ChatPDF &
+        Recherche und Zusammenfassung von wissenschaftlichen Studien im Themenfeld „Messung von energiereicher Strahlung“ (Kapitel 4 und 6.2) \\
+        \hline
+        Microsoft CoPilot &
+        – Nutzung von CoPilot in Microsoft Word 365 für Korrektur- und Formulierungshilfe (gesamt)\newline
+        – Übersetzung von Textpassagen zwischen deutsch und englisch (gesamt) \\
+        \hline
+    \end{tabularx}
+\end{table}
