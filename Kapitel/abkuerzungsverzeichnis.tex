@@ -1,12 +1,3 @@
 \setupchapter{Abkürzungsverzeichnis}
 
-\section*{\sectionname}
-\begin{flushleft}
-    \begin{tabular}{p{3cm}p{1cm}p{10cm}}
-        \bfseries Abkürzung & & \bfseries Beschreibung\\[0.5cm]
-        IOC && Indicator of Compromise\\
-
-    \end{tabular}
-\end{flushleft}
-
-\addcontentsline{toc}{section}{\sectionname}
+\printglossary[type=\acronymtype, title=\sectionname]

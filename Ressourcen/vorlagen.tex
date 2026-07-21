@@ -4,16 +4,17 @@ SQL"=Funktionalitäten ("= wird zum Bindestrich)
 
 Bilder einfügen:
 % mögliche Positionen: h = here, p = extra page gemeinsam mit anderen Bildern, t = top, b = bottom, ! = zwingend
-\begin{figure}[hp]                         
-    \centering                             
-    \includegraphics[width=0.6\textwidth]{Ressourcen/Bilder/SolutionStructure.png}
-    \caption{Struktur der Visual Studio Solution}\label{fig:VSSolution}    
+% Pfad relativ zu \graphicspath (main.tex), daher hier ohne "Ressourcen/Bilder/"-Präfix
+\begin{figure}[hp]
+    \centering
+    \includegraphics[width=0.6\textwidth]{SolutionStructure.png}
+    \caption{Struktur der Visual Studio Solution}\label{fig:VSSolution}
 \end{figure}
 
 
-Code einfügen:
-\begin{figure}[hp]
-    \begin{lstlisting}
+Code einfügen (Caption/Label direkt am lstlisting, damit der Codeschnipsel im
+Listingverzeichnis statt im Abbildungsverzeichnis erscheint):
+\begin{lstlisting}[caption={Ausschnitt der abstrakten Klasse SQLQueryable}, label={lst:SQLQueryableAusschnitt}]
 public abstract class SQLQueryable
 {
 		public abstract string TableName { get; }
@@ -22,9 +23,7 @@ public abstract class SQLQueryable
 		/// </summary>
 		protected abstract string[] ColumnNames { get; }
 }
-    \end{lstlisting}
-    \caption{Ausschnitt der abstrakten Klasse SQLQueryable}\label{fig:SQLQueryableAusschnitt}
-\end{figure}
+\end{lstlisting}
 
 Caption ohne Zitat im Abbildungsverzeichnis:
 \caption[Konfiguration des Ubuntu-Systems]{Konfiguration des Ubuntu-Systems, teilweise aus \cite{dockerUbuntuDockerDocs0200}}\label{fig:createMispUser}
@@ -51,3 +50,41 @@ Wie in \cref{fig:VSSolution} dargestellt, zeigt \cref{tab:systemkomponenten} die
 \Cref{fig:VSSolution} zeigt die Struktur der Solution.
 % Mehrere Referenzen auf einmal:
 wie in \cref{fig:VSSolution,tab:systemkomponenten} zu sehen
+
+
+Abkürzungen (glossaries-Package):
+% Neue Abkürzung in Ressourcen/abkuerzungen.tex definieren:
+% \newacronym{label}{Abkürzung}{Ausgeschriebene Bedeutung}
+% Im Fließtext referenzieren, z. B.:
+Ein \gls{ioc} zeigt eine mögliche Kompromittierung an.
+% Erste Verwendung im Dokument schreibt automatisch "Indicator of Compromise (IOC)" aus,
+% jede weitere Verwendung von \gls{ioc} zeigt nur noch "IOC".
+% Groß-/Kleinschreibung:
+\Gls{ioc} steht am Satzanfang groß.   % Satzanfang, erster Buchstabe groß
+Man spricht hier allgemein von \GLS{ioc}s.   % komplett in Großbuchstaben, z. B. für Überschriften
+
+
+Zitieren (biblatex, style=ieee):
+% \parencite für eine abschließende/parenthetische Quellenangabe:
+Dies wird bereits so beschrieben \parencite{amazonAmazonComputeSLA2022}.
+% \textcite, wenn die Quelle das grammatikalische Subjekt des Satzes ist:
+\textcite{amazonAmazonComputeSLA2022} beschreibt dieses Verhalten im Detail.
+% \parencite rendert unter style=ieee als reines "[1]", \textcite dagegen als "Autor [1]"
+% (schreibt den Autorennamen automatisch aus) — daher \textcite verwenden, wenn die Quelle als
+% Satzsubjekt auftritt, \parencite für die abschließende/parenthetische Angabe. \footcite passt
+% nicht zum nummerischen Klammerstil (Fußnote mit nur "[1]" wäre redundant) und wird deshalb hier
+% nicht verwendet.
+
+
+Deutsche Anführungszeichen (csquotes):
+\enquote{Ein Beispieltext}
+% \enquote{} setzt automatisch die korrekten Anführungszeichen für die aktive babel-Sprache
+% (hier: ngerman, also „Ein Beispieltext"). Die manuelle Variante ``Ein Beispieltext'' erzeugt
+% dagegen die falschen (englischen) Anführungszeichen und sollte nicht verwendet werden.
+
+
+Links im Fließtext (hyperref/xurl):
+\href{https://www.example.com}{Linktext}   % Link mit eigenem, lesbarem Anzeigetext
+\url{https://www.example.com/ein/sehr/langer/pfad-der-sonst-nicht-umbrechen-wuerde}
+% xurl (main.tex) erlaubt \url{}, an beliebigen Zeichen umzubrechen statt nur an "/" —
+% wichtig bei langen URLs, damit sie nicht über den Seitenrand hinauslaufen.

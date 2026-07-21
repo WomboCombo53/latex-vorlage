@@ -1,17 +1,6 @@
-\renewcommand{\sectionname}{Tabellenverzeichnis}
-
-\fancypagestyle{lotstyle}{
-  \fancyhf{}
-  \fancyhead[L]{\sectionname}
-  \fancyhead[R]{\Roman{page}}
-  \fancyfoot[L]{\creator}
-  \fancyfoot[R]{\company}
-  \renewcommand{\headrulewidth}{0.4pt}
-  \renewcommand{\footrulewidth}{0.4pt}
-}
+\setupverzeichnis{Tabellenverzeichnis}
 
 \phantomsection % Helper, damit die Verlinkung im Inhaltsverzeichnis stimmt
 
 \listoftables   % Tabellenverzeichnis
-\thispagestyle{lotstyle}    % Pagestyle anwenden, welches oben definiert wurde
 \addcontentsline{toc}{section}{\sectionname}  % Tabellenverzeichnis zum Inhaltsverzeichnis hinzufügen

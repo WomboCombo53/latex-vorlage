@@ -1,7 +1,8 @@
-\documentclass[a4paper, 12pt]{article} % Dokumentklasse, Einstellung auf A4 und Schriftgröße 12
+\documentclass[a4paper, 12pt]{scrartcl} % KOMA-Script Dokumentklasse, Einstellung auf A4 und Schriftgröße 12
 \usepackage[utf8]{inputenc} % UTF-8 Zeichenkodierung für pdfLaTeX
 \usepackage[T1]{fontenc}    % Umlaute für Silbentrennung
 \usepackage{graphicx}   % Package für Bilder
+\graphicspath{{Ressourcen/Bilder/}} % Bilder können ohne vollen Pfad eingebunden werden
 \usepackage{setspace}   % Space-Attribute
 \usepackage{helvet}     % Helvet Schrift
 \renewcommand{\familydefault}{\sfdefault}   % Einstellen der Schrift
@@ -29,8 +30,13 @@
 \setcounter{biburlucpenalty}{9000}
 \setcounter{biburllcpenalty}{9000}
 \usepackage{listings}   % Codeschnipselformatierung
+\renewcommand{\lstlistingname}{Listing} % Beschriftungspräfix für Codeschnipsel
+\renewcommand{\lstlistlistingname}{Listingverzeichnis} % Überschrift von \lstlistoflistings
 \usepackage[skip=10pt plus1pt, indent=0pt]{parskip} % Kein Einzug, stattdessen Zeilenabstand
-\usepackage[ngerman]{cleveref}  % Intelligente Querverweise mit \cref{} und \Cref{}
+\usepackage[acronym, nomain, toc, numberedsection=false]{glossaries} % Abkürzungsverzeichnis aus \gls{}-Referenzen generieren; lädt intern amsmath
+\makeglossaries
+\input{Ressourcen/abkuerzungen.tex} % Definitionen der Abkürzungen (\newacronym)
+\usepackage[ngerman]{cleveref}  % Intelligente Querverweise mit \cref{} und \Cref{} — muss nach amsmath (hier: via glossaries) geladen werden
 
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}   % Platzieren von Leaderdots im Inhaltsverzeichnis
 
@@ -64,12 +70,34 @@
   \renewcommand{\footrulewidth}{0.4pt}%
 }
 
+% Hilfsmakro für Inhalts-/Abbildungs-/Tabellen-/Listingverzeichnis: setzt sectionname und
+% definiert zusätzlich den "plain"-Pagestyle um, damit auch die (von LaTeX automatisch
+% mit "plain" gestylte) erste Seite des jeweiligen Verzeichnisses den richtigen Kopf-/Fußzeileninhalt
+% erhält. \pagestyle statt \thispagestyle sorgt dafür, dass auch mehrseitige Verzeichnisse
+% auf Folgeseiten den korrekten Kopf behalten statt auf den Stil des vorherigen Kapitels zurückzufallen.
+\newcommand{\setupverzeichnis}[1]{%
+  \renewcommand{\sectionname}{#1}%
+  \fancypagestyle{plain}{%
+    \fancyhf{}%
+    \fancyhead[L]{\sectionname}%
+    \fancyhead[R]{\thepage}%
+    \fancyfoot[L]{\creator}%
+    \fancyfoot[R]{\company}%
+    \renewcommand{\headrulewidth}{0.4pt}%
+    \renewcommand{\footrulewidth}{0.4pt}%
+  }%
+  \pagestyle{plain}%
+}
+
 \begin{document}    % Start Dokument
 
 \onehalfspacing % 1,5 Zeilenabstand
+\pagenumbering{Roman}           % Umstellen der Seitenzahlen auf Römisch (bereits vor dem Titelblatt, damit dieses
+                                 % intern als Seite I zählt statt als arabische Seite 1 — sonst kollidiert das später
+                                 % durch \pagenumbering{arabic} erneut vergebene "Seite 1" mit dem Titelblatt und
+                                 % hyperref/glossaries-Verweise auf Seite 1 landen fälschlich auf dem Titelblatt)
 \input{Kapitel/titelblatt.tex}  % Import Titelblatt
 \clearpage
-\pagenumbering{Roman}           % Umstellen der Seitenzahlen auf Römisch, damit auch im Inhaltsverzeichnis römisch
 \input{Kapitel/ehrenwoertliche_erklaerung.tex}  % Import Ehrenwörtliche Erklärung
 \clearpage      % Seitenumbruch
 \input{Kapitel/abstract_englisch.tex}  % Import Abstract Englisch
@@ -83,6 +111,8 @@
 \input{Kapitel/abbildungsverzeichnis.tex}
 \clearpage
 \input{Kapitel/tabellenverzeichnis.tex}
+\clearpage
+\input{Kapitel/codeverzeichnis.tex}
 \clearpage
 \pagenumbering{arabic}              % Umstellen der Seitenzahlen auf Arabisch, damit im Inhaltsverzeichnis arabisch
 \input{Kapitel/1_einleitung.tex}
